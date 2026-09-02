@@ -126,7 +126,7 @@ main {
 
 
 /* =========================================================
-   PAGE HEADER
+   PAGE HEADER / HERO
 ========================================================= */
 
 .page-header {
@@ -149,6 +149,14 @@ main {
     color: #6b7280;
 }
 
+.page-header p:first-child {
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #4b5563;
+}
+
 
 /* =========================================================
    CONTENT SECTIONS
@@ -169,6 +177,98 @@ main {
     max-width: 800px;
     color: #4b5563;
     margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   FEATURED PROJECT
+========================================================= */
+
+.project-card {
+    margin-top: 35px;
+
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Project image */
+
+.project-preview {
+    background-color: #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 360px;
+    overflow: hidden;
+}
+
+.project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Project information */
+
+.project-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-info h3 {
+    margin-bottom: 18px;
+
+    font-size: 1.65rem;
+    line-height: 1.2;
+
+    color: #111827;
+}
+
+.project-info p {
+    max-width: none;
+    margin-bottom: 18px;
+}
+
+
+/* Technology / secondary description */
+
+.project-info p:nth-of-type(2) {
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+
+/* Proprietary project disclaimer */
+
+.project-info p:last-child {
+    margin-top: 8px;
+    margin-bottom: 0;
+
+    font-size: 0.82rem;
+    line-height: 1.5;
+
+    color: #6b7280;
 }
 
 
@@ -240,6 +340,23 @@ footer p {
         padding: 60px 0;
     }
 
+    /* Stack featured project vertically */
+    .project-card {
+        grid-template-columns: 1fr;
+    }
+
+    .project-preview {
+        min-height: auto;
+    }
+
+    .project-preview img {
+        height: auto;
+    }
+
+    .project-info {
+        padding: 30px;
+    }
+
     footer .container {
         flex-direction: column;
         text-align: center;
@@ -278,4 +395,557 @@ footer p {
     .content h2 {
         font-size: 1.7rem;
     }
+
+    .project-info {
+        padding: 25px;
+    }
+
+    .project-info h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+/* About introduction */
+
+.about-intro {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: center;
+    gap: 60px;
+
+    max-width: 950px;
+}
+
+
+/* Professional headshot */
+
+.about-photo {
+    width: 280px;
+}
+
+.about-photo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+
+/* Introduction text */
+
+.about-intro-text h2 {
+    margin-bottom: 20px;
+}
+
+.about-intro-text p {
+    max-width: 650px;
+}
+
+
+/* Areas of interest */
+
+.interest-list {
+    max-width: 800px;
+    padding-left: 20px;
+    color: #4b5563;
+}
+
+.interest-list li {
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   ABOUT PAGE RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .about-intro {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-photo {
+        width: 220px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .about-photo {
+        width: 180px;
+    }
+
+}
+
+/* =========================================================
+   EXPERIENCE TIMELINE
+========================================================= */
+
+.experience-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 45px;
+}
+
+/* Vertical timeline line */
+
+.experience-timeline::before {
+    content: "";
+
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 9px;
+
+    width: 2px;
+    background-color: #e5e7eb;
+}
+
+
+/* Individual experience */
+
+.experience-item {
+    position: relative;
+    padding-bottom: 65px;
+}
+
+.experience-item:last-child {
+    padding-bottom: 0;
+}
+
+
+/* Timeline marker */
+
+.experience-marker {
+    position: absolute;
+
+    left: -45px;
+    top: 8px;
+
+    width: 20px;
+    height: 20px;
+
+    background-color: #ffffff;
+    border: 3px solid #374151;
+    border-radius: 50%;
+
+    z-index: 1;
+}
+
+
+/* Experience content */
+
+.experience-content {
+    max-width: 800px;
+}
+
+.experience-content h2 {
+    margin-bottom: 6px;
+
+    font-size: 1.7rem;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.experience-content h3 {
+    margin-bottom: 6px;
+
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.experience-meta {
+    margin-bottom: 20px;
+
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.experience-content > p:not(.experience-meta) {
+    max-width: 750px;
+    margin-bottom: 18px;
+}
+
+.experience-content ul {
+    max-width: 750px;
+    padding-left: 20px;
+
+    color: #4b5563;
+}
+
+.experience-content li {
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+
+/* =========================================================
+   EXPERIENCE RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .experience-timeline {
+        padding-left: 35px;
+    }
+
+    .experience-timeline::before {
+        left: 7px;
+    }
+
+    .experience-marker {
+        left: -35px;
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+
+    .experience-content h2 {
+        font-size: 1.5rem;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .experience-timeline {
+        padding-left: 28px;
+    }
+
+    .experience-timeline::before {
+        left: 6px;
+    }
+
+    .experience-marker {
+        left: -28px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .experience-content h2 {
+        font-size: 1.35rem;
+    }
+
+    .experience-content h3 {
+        font-size: 0.95rem;
+    }
+
+}
+
+/* =========================================================
+   PROJECTS PAGE
+========================================================= */
+
+/* Project category */
+
+.project-category {
+    margin-bottom: 12px !important;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+
+    color: #6b7280;
+}
+
+
+/* Project technology line */
+
+.project-technologies {
+    margin-top: 22px;
+    margin-bottom: 0 !important;
+
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+
+/* Featured project */
+
+.project-card-featured {
+    margin-top: 30px;
+}
+
+
+/* Small project grid */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+
+    margin-top: 30px;
+}
+
+.project-card-small {
+    margin-top: 0;
+}
+
+
+/* Project disclaimer */
+
+.project-disclaimer {
+    margin-top: 18px;
+    margin-bottom: 0 !important;
+
+    font-size: 0.8rem;
+    line-height: 1.5;
+
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   ADDITIONAL PROJECTS
+========================================================= */
+
+.additional-projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+
+    margin-top: 30px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.additional-project {
+    padding: 25px;
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+}
+
+.additional-project h3 {
+    margin-bottom: 6px;
+
+    font-size: 1rem;
+    color: #111827;
+}
+
+.additional-project p {
+    margin-bottom: 0;
+
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   PROJECTS RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .additional-projects {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .project-info {
+        padding: 25px;
+    }
+
+    .project-card-small .project-info {
+        padding: 25px;
+    }
+
+}
+
+/* =========================================================
+   RESUME PAGE
+========================================================= */
+
+.resume-header {
+    margin-bottom: 35px;
+}
+
+.resume-header h2 {
+    margin-bottom: 12px;
+}
+
+.resume-header p {
+    margin-bottom: 25px;
+}
+
+
+/* Resume buttons */
+
+.resume-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.resume-button {
+    display: inline-block;
+
+    padding: 11px 20px;
+
+    background-color: #111827;
+    color: #ffffff;
+
+    border-radius: 6px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.resume-button:hover {
+    background-color: #374151;
+    transform: translateY(-1px);
+}
+
+.resume-button-secondary {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.resume-button-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+
+/* Embedded PDF */
+
+.resume-viewer {
+    width: 100%;
+    height: 1100px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    overflow: hidden;
+    background-color: #f8fafc;
+}
+
+.resume-viewer iframe {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+}
+
+
+/* =========================================================
+   RESUME RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .resume-viewer {
+        height: 900px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .resume-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .resume-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .resume-viewer {
+        height: 750px;
+    }
+
+}
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    margin-top: 35px;
+    max-width: 900px;
+}
+
+
+/* Contact cards */
+
+.contact-card {
+    display: block;
+
+    padding: 30px;
+
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    border-color: #d1d5db;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.contact-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.contact-card p {
+    margin-bottom: 0;
+
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   CONTACT RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
 }
