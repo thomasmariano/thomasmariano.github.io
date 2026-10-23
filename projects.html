@@ -15,6 +15,8 @@
         gtag('config', 'G-FVK29W4X5B');
     </script>
     <meta charset="UTF-8">
+    <meta name="description" content="Explore engineering projects by Thomas Mariano, including a MEOSAR mission scheduler, an award-winning stair lift, and embedded sensor systems.">
+    <meta name="theme-color" content="#102c38">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Projects | Thomas Mariano</title>
@@ -24,21 +26,25 @@
 
 </head>
 
-<body>
+<body class="page-projects">
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <header>
-    <nav>
+    <nav aria-label="Main navigation">
         <div class="nav-container">
 
             <a href="index.html" class="logo">
                 Thomas Mariano
             </a>
 
-            <div class="nav-links">
+            <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation" hidden>
+                <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+            <div class="nav-links" id="primary-navigation">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="experience.html">Experience</a>
-                <a href="projects.html">Projects</a>
+                <a href="projects.html" aria-current="page">Projects</a>
                 <a href="resume.html">Resume</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -48,7 +54,7 @@
 </header>
 
 
-<main>
+<main id="main-content">
 
     <!-- Page Header -->
     <section class="page-header">
@@ -57,8 +63,7 @@
             <h1>Projects</h1>
 
             <p>
-                A collection of software, mechanical, electrical,
-                and multidisciplinary engineering projects.
+                Software, data pipelines, and hardware projects. Each example describes what I built and how the parts work together.
             </p>
 
         </div>
@@ -69,12 +74,13 @@
     <section class="content">
         <div class="container">
 
-            <h2>Featured Project</h2>
+            <h2>MEOSAR Mission Scheduler &amp; Simulator</h2>
+            <p>Two integrated applications: a scheduler for building satellite tracking plans and a simulator for exploring those plans over time.</p>
 
-            <article class="project-card project-card-featured">
+            <article class="project-card project-card-featured" id="meosar-scheduler">
 
                 <div class="project-preview">
-                    <img src="images/meosar-scheduler.png"
+                    <img src="images/MEOSAR_Scheduler_1.png"
                          alt="MEOSAR Mission Scheduler application">
                 </div>
 
@@ -84,7 +90,7 @@
                         SOFTWARE · AEROSPACE · SYSTEMS
                     </p>
 
-                    <h3>MEOSAR Mission Scheduler</h3>
+                    <h3>Mission scheduler</h3>
 
                     <p>
                         A Python-based mission scheduling application
@@ -94,10 +100,10 @@
                     </p>
 
                     <p>
-                        The application combines satellite data,
-                        visibility calculations, antenna constraints,
-                        and scheduling logic into a graphical interface
-                        for mission planning.
+                        I developed a graphical workflow that brings mission configuration,
+                        satellite selection, antenna assignments, and coverage analysis
+                        together. Its exported tracking schedules can be loaded into the
+                        companion MEOSAR Mission Simulator for visual review.
                     </p>
 
                     <p class="project-technologies">
@@ -117,6 +123,74 @@
 
             </article>
 
+            <div class="project-details">
+                <div class="project-detail-intro">
+                    <p class="eyebrow">My work</p>
+                    <h3>Scheduling logic and configuration</h3>
+                    <p>I built the scheduler around a configurable mission window, mission and ground locations, satellite selection, and antenna availability. The workspace brings the resulting assignments and visibility plots together so a tracking plan can be reviewed alongside its coverage.</p>
+                </div>
+                <dl class="project-capabilities">
+                    <div><dt>Mission configuration</dt><dd>Set an event time in UTC, define coverage before and after the event, select mission and ground sites, and add weighted alternate coverage locations.</dd></div>
+                    <div><dt>Tracking schedules</dt><dd>Review satellite assignments by antenna on a time-based chart, with controls to edit and export the schedule.</dd></div>
+                    <div><dt>Visibility analysis</dt><dd>Compare selected-satellite and all-satellite mutual-visibility timelines, alongside satellite counts throughout the mission window.</dd></div>
+                    <div><dt>Orbit-data review</dt><dd>Select satellites by NORAD or MEOSAR ID and review TLE epochs against a configurable age cutoff.</dd></div>
+                </dl>
+            </div>
+
+            <div class="implementation-notes">
+                <h3>Implementation decisions</h3>
+                <dl class="project-capabilities">
+                    <div><dt>Scheduling under constraints</dt><dd>I used a bounded beam search alongside a greedy baseline and an antenna/satellite matching seed. Candidate assignments account for mutual visibility, antenna band compatibility, duplicate assignments, and contact retention. This is a scheduling heuristic rather than a guaranteed global optimum.</dd></div>
+                    <div><dt>Data that can be traced</dt><dd>TLE handling includes source records, epoch-age checks, and missing-satellite reporting. Machine-readable schedule exports are kept separate from diagnostics, with companion metadata carrying the simulator’s mission context.</dd></div>
+                    <div><dt>Shared logic between applications</dt><dd>The scheduler and simulator share visibility calculations and UTC handling. The Python-to-JavaScript bridge passes orbital data as JSON, while diagnostics help investigate disagreements in timestamps, satellite records, or observer settings.</dd></div>
+                    <div><dt>Code and configuration maintenance</dt><dd>I split large interface and data-management files into smaller components, separated packaged resources from writable configuration, and used temporary files with atomic replacement for configuration writes.</dd></div>
+                </dl>
+            </div>
+
+            <div class="screenshot-heading"><h3>Inside the scheduler</h3><p>Select any screenshot to open the full-resolution image.</p></div>
+            <div class="screenshot-gallery">
+                <figure>
+                    <a href="images/MEOSAR_Scheduler_1.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution scheduler workspace screenshot"><img src="images/MEOSAR_Scheduler_1.png" alt="Scheduler workspace with mission configuration, antenna assignments, and coverage plots" loading="lazy" width="5114" height="2818"></a>
+                    <figcaption><strong>01 / Mission workspace</strong>Configuration, tracking assignments, and coverage views in a single interface.</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/MEOSAR_Scheduler_2.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution antenna assignment screenshot"><img src="images/MEOSAR_Scheduler_2.png" alt="Expanded tracking timeline showing color-coded satellite assignments across five antennas" loading="lazy" width="5120" height="2814"></a>
+                    <figcaption><strong>02 / Antenna assignment timeline</strong>Color-coded satellite assignments show how antenna tracking changes around the mission event.</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/MEOSAR_Scheduler_3.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution mutual visibility screenshot"><img src="images/MEOSAR_Scheduler_3.png" alt="Side-by-side satellite mutual-visibility charts with visibility intervals and satellite counts" loading="lazy" width="5118" height="2822"></a>
+                    <figcaption><strong>03 / Mutual visibility</strong>Selected and all-satellite coverage views make visibility intervals and changing satellite counts easier to compare.</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/MEOSAR_Scheduler_4.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution embedded simulation screenshot"><img src="images/MEOSAR_Scheduler_4.png" alt="Embedded Earth and satellite tracking preview with Goddard and KSC location markers and playback controls" loading="lazy" width="5120" height="2814"></a>
+                    <figcaption><strong>04 / Embedded simulation preview</strong>A globe view connects the schedule to satellite positions and ground locations, with playback and time-step controls.</figcaption>
+                </figure>
+            </div>
+
+            <section class="simulator-showcase" id="meosar-simulator" aria-labelledby="simulator-title">
+            <p class="eyebrow">Integrated application / Simulation &amp; visualization</p>
+            <h3 id="simulator-title">Integrated mission simulator</h3>
+            <p>I built the simulator into the scheduler with an embedded preview and a dedicated simulator window. The two applications exchange assignment text and companion mission metadata, use UTC throughout, and share visibility calculations.</p>
+            <p>The Python backend supplies orbital data to an HTML, CSS, and JavaScript globe dashboard embedded through PyQt6-WebEngine. This connects the scheduler’s tracking assignments to interactive satellite and coverage views.</p>
+            <div class="project-details">
+                <div class="project-detail-intro">
+                    <h3>Playback, coverage, and diagnostics</h3>
+                    <p>I developed the simulator as a companion to the scheduler. It loads a tracking schedule and TLE orbit data into a globe-based playback workspace, bringing satellite positions, ground locations, coverage, and assignment status into the same view.</p>
+                    <p>The scheduler creates the tracking plan; the simulator provides a way to inspect how that plan relates to the simulated geometry throughout the mission window.</p>
+                </div>
+                <dl class="project-capabilities">
+                    <div><dt>Schedule and orbit data</dt><dd>Load exported tracking schedules and import or refresh TLE data for the simulation.</dd></div>
+                    <div><dt>Playback and satellite layers</dt><dd>Step through mission time, adjust playback speed, and control the display of satellite orbits, tracking, and coverage.</dd></div>
+                    <div><dt>Coverage and assignment review</dt><dd>Inspect location coverage counts, the assignment timeline, and scheduler/simulator checks alongside the globe.</dd></div>
+                    <div><dt>Inspection and diagnostics</dt><dd>Review satellite information and engine diagnostics in the simulation workspace.</dd></div>
+                </dl>
+            </div>
+            <figure class="simulator-figure">
+                <a href="images/Simulator_1.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution MEOSAR mission simulator screenshot"><img src="images/Simulator_1.png" alt="MEOSAR mission simulator showing satellite orbits, coverage metrics, an assignment timeline, and playback controls" loading="lazy" width="5120" height="2818"></a>
+                <figcaption><strong>Mission simulation dashboard</strong>Schedule playback with satellite layers, location coverage, assignment checks, and diagnostics. Coverage is modeled using geometric line-of-sight and an elevation mask.</figcaption>
+            </figure>
+            <p class="project-technologies"><strong>Simulator technologies:</strong> Python, PyQt6-WebEngine, JavaScript, HTML/CSS, Canvas, SGP4, Skyfield, JSON.</p>
+            </section>
         </div>
     </section>
 
@@ -125,10 +199,22 @@
     <section class="content">
         <div class="container">
 
-            <h2>Engineering Projects</h2>
+            <h2>Other projects</h2>
 
             <div class="projects-grid">
 
+
+                <!-- Local orbital-data generation for SAR -->
+                <article class="project-card project-card-small" id="gnss-tle-generation">
+                    <div class="project-info">
+                        <p class="project-category">SOFTWARE · ORBITAL ANALYSIS · SAR</p>
+                        <h3>Local GNSS-to-TLE Generation System</h3>
+                        <p>I developed a local orbital-data system used for search-and-rescue operations across all MEOSAR satellites. It converts GNSS broadcast navigation data into SGP4-compatible Two-Line Element sets (TLEs), providing an internally maintained source of orbital data for MEOLUT/MCC systems.</p>
+                        <p>The pipeline ingests RINEX navigation records from SecureSync, calculates satellite positions and velocities, transforms Earth-fixed states into TEME coordinates, and fits orbital elements using numerical least squares. It serializes the results as TLEs with checksums and publishes updates over the internal network.</p>
+                        <p>My work covered navigation-data processing, coordinate transformations, orbital fitting, and validation against independent precise SP3 orbit products. The system maintains local orbital updates without recurring Internet requests to external TLE catalogs.</p>
+                        <p class="project-technologies"><strong>Technologies:</strong> Python, GNSS, RINEX, SGP4, Astropy, numerical least squares, SP3 orbit validation, SecureSync.</p>
+                    </div>
+                </article>
 
                 <!-- Workout Application -->
                 <article class="project-card project-card-small">
@@ -158,7 +244,7 @@
 
 
                 <!-- Stair Lift -->
-                <article class="project-card project-card-small">
+                <article class="project-card project-card-small" id="stair-lift">
 
                     <div class="project-info">
 
@@ -194,7 +280,7 @@
 
 
                 <!-- Car Backup Sensor -->
-                <article class="project-card project-card-small">
+                <article class="project-card project-card-small" id="backup-sensor">
 
                     <div class="project-info">
 

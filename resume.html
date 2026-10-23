@@ -15,6 +15,8 @@
         gtag('config', 'G-FVK29W4X5B');
     </script>
     <meta charset="UTF-8">
+    <meta name="description" content="View or download Thomas Mariano’s resume, covering engineering experience, education, and technical skills.">
+    <meta name="theme-color" content="#102c38">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Resume | Thomas Mariano</title>
@@ -24,22 +26,26 @@
 
 </head>
 
-<body>
+<body class="page-resume">
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <header>
-    <nav>
+    <nav aria-label="Main navigation">
         <div class="nav-container">
 
             <a href="index.html" class="logo">
                 Thomas Mariano
             </a>
 
-            <div class="nav-links">
+            <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation" hidden>
+                <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+            <div class="nav-links" id="primary-navigation">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="experience.html">Experience</a>
                 <a href="projects.html">Projects</a>
-                <a href="resume.html">Resume</a>
+                <a href="resume.html" aria-current="page">Resume</a>
                 <a href="contact.html">Contact</a>
             </div>
 
@@ -48,7 +54,7 @@
 </header>
 
 
-<main>
+<main id="main-content">
 
     <!-- Page Header -->
     <section class="page-header">

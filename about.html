@@ -15,6 +15,8 @@
         gtag('config', 'G-FVK29W4X5B');
     </script>
     <meta charset="UTF-8">
+    <meta name="description" content="Meet Thomas Mariano, a University of Maryland mechanical engineering graduate working across aerospace systems, software, and hardware.">
+    <meta name="theme-color" content="#102c38">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>About | Thomas Mariano</title>
@@ -24,19 +26,23 @@
 
 </head>
 
-<body>
+<body class="page-about">
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <header>
-    <nav>
+    <nav aria-label="Main navigation">
         <div class="nav-container">
 
             <a href="index.html" class="logo">
                 Thomas Mariano
             </a>
 
-            <div class="nav-links">
+            <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation" hidden>
+                <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+            <div class="nav-links" id="primary-navigation">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
+                <a href="about.html" aria-current="page">About</a>
                 <a href="experience.html">Experience</a>
                 <a href="projects.html">Projects</a>
                 <a href="resume.html">Resume</a>
@@ -48,7 +54,7 @@
 </header>
 
 
-<main>
+<main id="main-content">
 
     <!-- Page Header -->
     <section class="page-header">
@@ -57,9 +63,8 @@
             <h1>About Me</h1>
 
             <p>
-                Systems Engineer with a multidisciplinary background
-                spanning aerospace, software, hardware, and mechanical
-                engineering.
+                I’m a systems engineer who writes software, works with hardware,
+                and likes understanding why something isn’t working.
             </p>
 
         </div>
@@ -79,19 +84,14 @@
 
                 <div class="about-intro-text">
 
-                    <h2>Engineering Across Disciplines</h2>
+                    <h2>How I got here</h2>
 
                     <p>
-                        I am an engineer with a background in mechanical
-                        engineering and experience spanning aerospace
-                        systems, software development, hardware
-                        integration, and technical problem solving.
+                        I studied mechanical engineering at the University of Maryland. Working on aerospace ground systems led me further into software: building scheduling tools, processing orbital data, and connecting applications to the systems they support.
                     </p>
 
                     <p>
-                        I enjoy working at the intersection of different
-                        engineering disciplines and developing practical
-                        solutions to complex problems.
+                        I enjoy being able to follow a problem from the hardware into the code. My projects reflect that mix, from a physical stair-lift prototype to Python desktop applications and satellite visualization.
                     </p>
 
                 </div>
@@ -115,6 +115,13 @@
             </p>
 
             <p>
+                I am currently pursuing a master’s in Computer Science at
+                Georgia Institute of Technology (Georgia Tech), building
+                on my mechanical engineering background and software
+                development experience.
+            </p>
+
+            <p>
                 My engineering experience has taken me across several
                 disciplines, including aerospace systems, mechanical
                 design, software development, electronics, testing,
@@ -133,25 +140,27 @@
     </section>
 
 
-    <!-- Engineering Approach -->
+    <!-- How I build software -->
     <section class="content">
         <div class="container">
 
             <h2>Engineering Approach</h2>
 
             <p>
-                I enjoy working on problems that cross traditional
-                engineering boundaries. Whether the solution involves
-                software, electronics, mechanical hardware, or a
-                combination of the three, I like understanding how the
-                pieces interact and building practical solutions that
-                work in the real world.
+                The MEOSAR scheduler starts with operational constraints: which
+                satellites are visible, which antennas are available, and which
+                frequency bands each antenna supports. I translated those
+                constraints into scheduling logic and a desktop interface where
+                the resulting assignments can be reviewed and edited.
             </p>
 
             <p>
-                My approach is centered on understanding how a system
-                works, identifying the problem, and developing solutions
-                that are practical, reliable, and maintainable.
+                For the simulator, I connected a Python orbital-data backend to a
+                JavaScript dashboard through JSON. Keeping timestamps, satellite
+                identities, and visibility calculations consistent between the two
+                applications was an important part of the integration. I also
+                separated configuration, interface, and data-handling responsibilities
+                into smaller modules as the applications grew.
             </p>
 
         </div>
@@ -162,24 +171,37 @@
     <section class="content">
         <div class="container">
 
-            <h2>What I Work On</h2>
+            <h2>Technical experience</h2>
 
             <p>
-                My technical interests and areas of experience include:
+                The tools and responsibilities behind my projects include:
             </p>
 
             <ul class="interest-list">
-                <li>Systems Engineering</li>
-                <li>Aerospace and Satellite Systems</li>
-                <li>Software Development</li>
-                <li>Hardware Integration</li>
-                <li>Automation and Engineering Tools</li>
-                <li>Mechanical Design and Prototyping</li>
+                <li>Python desktop applications with PyQt6</li>
+                <li>JavaScript, HTML/CSS, and Canvas visualization</li>
+                <li>JSON data exchange and application integration</li>
+                <li>Scientific computing and orbital-data processing</li>
+                <li>System troubleshooting, testing, and hardware integration</li>
+                <li>Git, modular code organization, and technical documentation</li>
+                <li>SolidWorks, mechanical design, and prototyping</li>
+                <li>Swift/iOS and Arduino/C++ projects</li>
             </ul>
 
         </div>
     </section>
 
+    <section class="content">
+        <div class="container">
+            <h2>What I’m looking for</h2>
+            <p>I’m interested in software engineering, solutions engineering,
+                solutions architecture, and forward deployed engineering roles.
+                I’m drawn to work where I can understand a technical problem,
+                build the software, and work through the integration with the
+                people using it.</p>
+            <a class="text-link" href="contact.html">Get in touch →</a>
+        </div>
+    </section>
 </main>
 
 
